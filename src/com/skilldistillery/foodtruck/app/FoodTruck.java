@@ -61,11 +61,22 @@ public class FoodTruck {
 				for (int i = 0; i < foodTruckArr.length; i++) {
 					if (foodTruckArr[i] == null) {
 						continue;
-					}
-					System.out.println(foodTruckArr[i].toString());
+					} else
+						System.out.println(foodTruckArr[i].toString());
 				}
 				break;
 			case "2":
+				int product = 0;
+
+				for (int i = 0; i < counter; i++) {
+					if (i < counter) {
+						product = product + foodTruckArr[i].truckRating;
+					}
+				}
+				double average;
+				average = (product / counter);
+				System.out.println("Average rating is: " + average);
+
 				break;
 			case "3":
 				break;

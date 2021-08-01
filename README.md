@@ -28,4 +28,6 @@ For menu, chose do while loop because it will always execute at least once, whic
 
 Chose a switch menu to run the scenario chosen.
 
+using for loop to only show trucks entered. 
+
 ###Lessons Learned
