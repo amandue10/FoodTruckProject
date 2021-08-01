@@ -1,5 +1,6 @@
 package com.skilldistillery.foodtruck.app;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class FoodTruck {
@@ -52,18 +53,24 @@ public class FoodTruck {
 			System.out.println("Press 2 to see the average ratings of " + "the food trucks");
 			System.out.println("Press 3 to display the highest rated food truck");
 			System.out.println("Press 4 to quit the program");
-			int menuChoice = input.nextInt();
+			String menuChoice = input.next();
 
 			switch (menuChoice) {
 
-			case 1:
+			case "1":
+				for (int i = 0; i < foodTruckArr.length; i++) {
+					if (foodTruckArr[i] == null) {
+						continue;
+					}
+					System.out.println(foodTruckArr[i].toString());
+				}
 				break;
-			case 2:
+			case "2":
 				break;
-			case 3:
+			case "3":
 				break;
 
-			case 4:
+			case "4":
 				goWhileTrue = false;
 				System.out.println("Come again, soon!");
 				break;
@@ -100,6 +107,7 @@ public class FoodTruck {
 		return foodTruckName;
 	}
 
+// need to fix to show food truck names, currently showing null
 	public void setFoodTruckName(String foodTruckName) {
 		this.foodTruckName = foodTruckName;
 	}
@@ -150,6 +158,13 @@ public class FoodTruck {
 
 	public void setCounter(int counter) {
 		this.counter = counter;
+	}
+
+	@Override
+	public String toString() {
+		return "FoodTruck [foodTruckName=" + foodTruckName + ", foodType=" + foodType + ", truckRating=" + truckRating
+				+ ", uniqueId=" + uniqueId + ", counter=" + counter + ", foodTruckArr=" + Arrays.toString(foodTruckArr)
+				+ "]";
 	}
 
 }
