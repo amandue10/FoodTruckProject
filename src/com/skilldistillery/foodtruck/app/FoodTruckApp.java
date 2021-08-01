@@ -9,7 +9,7 @@ public class FoodTruckApp {
 
 		FoodTruck foodTruck = new FoodTruck();
 		foodTruck.truckInput(input);
-
+		foodTruck.menu(input);
 	}
 
 }

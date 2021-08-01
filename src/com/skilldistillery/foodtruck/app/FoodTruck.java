@@ -12,6 +12,7 @@ public class FoodTruck {
 
 	private FoodTruck foodTruckArr[] = new FoodTruck[5];
 
+// input method for truck input
 	public void truckInput(Scanner input) {
 		String truckName, foodType;
 		int truckRating, i;
@@ -40,6 +41,37 @@ public class FoodTruck {
 			foodTruckArr[i].setId(i);
 			counter++;
 		}
+	}
+
+	// menu method
+	public void menu(Scanner input) {
+		boolean goWhileTrue = true;
+
+		do {
+			System.out.println("Press 1 to list existing food trucks");
+			System.out.println("Press 2 to see the average ratings of " + "the food trucks");
+			System.out.println("Press 3 to display the highest rated food truck");
+			System.out.println("Press 4 to quit the program");
+			int menuChoice = input.nextInt();
+
+			switch (menuChoice) {
+
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+
+			case 4:
+				goWhileTrue = false;
+				System.out.println("Come again, soon!");
+				break;
+
+			}
+
+		} while (goWhileTrue);
+
 	}
 
 	// constructor
