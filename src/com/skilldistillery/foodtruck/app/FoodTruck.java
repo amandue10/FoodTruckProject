@@ -1,6 +1,5 @@
 package com.skilldistillery.foodtruck.app;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class FoodTruck {
@@ -15,17 +14,17 @@ public class FoodTruck {
 
 // input method for truck input
 	public void truckInput(Scanner input) {
-		String truckName, foodType;
+		String foodTruckName, foodType;
 		int truckRating, i;
 
 		for (i = 0; i < foodTruckArr.length; i++) {
 			System.out.println("Enter name of food truck you would like to rate:");
-			truckName = input.next();
-			if (truckName.equalsIgnoreCase("quit")) {
+			foodTruckName = input.next();
+			if (foodTruckName.equalsIgnoreCase("quit")) {
 				break;
 			}
 			foodTruckArr[i] = new FoodTruck();
-			foodTruckArr[i].setTruckName(foodTruckName);
+			foodTruckArr[i].setFoodTruckName(foodTruckName);
 
 			System.out.println("Enter type of food:");
 			foodType = input.next();
@@ -56,11 +55,10 @@ public class FoodTruck {
 			String menuChoice = input.next();
 
 			switch (menuChoice) {
-
 			case "1":
 				for (int i = 0; i < foodTruckArr.length; i++) {
 					if (foodTruckArr[i] == null) {
-						continue;
+						continue; // skip
 					} else
 						System.out.println(foodTruckArr[i].toString());
 				}
@@ -74,11 +72,20 @@ public class FoodTruck {
 					}
 				}
 				double average;
-				average = (product / counter);
+				average = ((double) product / counter);
 				System.out.println("Average rating is: " + average);
 
 				break;
 			case "3":
+				FoodTruck highRatedTruck = foodTruckArr[0];
+
+				for (int i = 0; i < counter; i++) {
+					if (highRatedTruck.truckRating < foodTruckArr[i].truckRating) {
+						highRatedTruck = foodTruckArr[i];
+					}
+				}
+				System.out.println(highRatedTruck);
+
 				break;
 
 			case "4":
@@ -93,8 +100,8 @@ public class FoodTruck {
 	}
 
 	// constructor
-	public FoodTruck(String truckName, String foodType, int truckRating, FoodTruck[] foodTruckArr) {
-		this.foodTruckName = truckName;
+	public FoodTruck(String foodTruckName, String foodType, int truckRating, FoodTruck[] foodTruckArr) {
+		this.foodTruckName = foodTruckName;
 		this.foodType = foodType;
 		this.truckRating = truckRating;
 		this.uniqueId = nextId;
@@ -104,11 +111,6 @@ public class FoodTruck {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void setTruckName(String foodTruckName2) {
-
-	}
-
-//blueprint for ID Number generator
 	public void setId(int i) {
 		this.uniqueId = nextId;
 		nextId++;
@@ -118,7 +120,6 @@ public class FoodTruck {
 		return foodTruckName;
 	}
 
-// need to fix to show food truck names, currently showing null
 	public void setFoodTruckName(String foodTruckName) {
 		this.foodTruckName = foodTruckName;
 	}
@@ -144,7 +145,7 @@ public class FoodTruck {
 	}
 
 	public void setUniqueId(int uniqueId) {
-		uniqueId = uniqueId;
+		this.uniqueId = uniqueId;
 	}
 
 	public static int getNextId() {
@@ -174,8 +175,6 @@ public class FoodTruck {
 	@Override
 	public String toString() {
 		return "FoodTruck [foodTruckName=" + foodTruckName + ", foodType=" + foodType + ", truckRating=" + truckRating
-				+ ", uniqueId=" + uniqueId + ", counter=" + counter + ", foodTruckArr=" + Arrays.toString(foodTruckArr)
-				+ "]";
+				+ ", uniqueId=" + uniqueId + "]";
 	}
-
 }
